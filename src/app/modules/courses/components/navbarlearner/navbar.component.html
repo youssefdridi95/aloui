@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg bg-primary fixed-top" style="background:#000000;" height="20px" color-on-scroll="500" >
+    <div class="container" >
+     
+        <div class="navbar-translate">
+            <a class="navbar-brand" [routerLink]="['/index']" placement="bottom" ngbTooltip="Designed by Invision. Coded by Creative Tim">
+                <img alt="Brand" src="assets/img/logo2.png" width="100px" height="20px">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+            </button>
+        </div>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <img *ngIf="userDetails" alt="Brand" src="{{userDetails.profilepic}}" width="40px" height="40px" class="rounded-circle img-raised">
+        &nbsp;<span class="badge badge-success">Balance : 0 TND</span>  &nbsp; &nbsp; <a routerLink="/profile" ><span class="badge badge-default" style="display: inline;white-space: nowrap;">Switch to teacher mode</span></a>
+       
+        <div class="collapse navbar-collapse" data-nav-image="assets/img/blurred-image-1.jpg" data-color="orange">
+            <ul class="navbar-nav ml-auto">
+                <a routerLink="/courses" >   <li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
+                        <i class="now-ui-icons objects_spaceship"></i> Explore
+                      <p class="d-lg-none d-xl-none">Facebook</p>
+                    </a>
+                  </li></a>
+                  
+                <a routerLink="/myorders" ><li class="nav-item">
+                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
+                        <i class="now-ui-icons shopping_box"></i> My orders
+                    </a>
+               
+                  </li> </a>
+                          <a routerLink="/myprofile" ><li class="nav-item">
+                                <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
+                                    <i class="now-ui-icons users_single-02"></i> Dashbord
+                                </a>
+                           
+                              </li> </a>
+                              
+                              <a routerLink="/inbox" ><li class="nav-item">   
+                                        <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
+                                            <i class="now-ui-icons ui-1_email-85"></i> Messages
+                                          <p class="d-lg-none d-xl-none">Facebook</p>
+                                        </a>
+                                      </li></a>
+            </ul>
+        </div>
+    </div>
+</nav>

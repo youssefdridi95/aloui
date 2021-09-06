@@ -1,0 +1,189 @@
+<app-navbarlearner></app-navbarlearner>
+<div class="wrapper">
+    <div class="section">
+        <div class="container" >
+             </div>
+              <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+                  <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Fill order requirements : </ng-template>
+                <div class="container" class="card">
+                  <div class="row" style="margin-left:20px">
+                        <div class="col-md-3" style="padding-right:0">
+                        <H4><i class="now-ui-icons business_briefcase-24" ></i> Choose a package : </H4>
+                        </div>
+                        <div class="col-md-8" style="margin-left:50">
+                            <mat-form-field >
+                                <mat-label>Select a package</mat-label>
+                                <mat-select [(value)]="selectedPackage">
+                                  <mat-option value="Basic">Basic</mat-option>
+                                  <mat-option value="Standard">Standard</mat-option>
+                                  <mat-option value="Premium">Premium</mat-option>
+                                </mat-select>
+                                </mat-form-field>
+                  </div>
+                  
+                </div>
+                <br>
+                <div class="row" style="margin-left:20px">
+                    <div class="col-md-3" style="padding-right:0">
+                    <H4><i  class="now-ui-icons ui-1_calendar-60" ></i>Pick a time and a date : </H4>
+                    </div>
+                    <div class="col-md-9">
+                      <p-calendar dateFormat="yy-mm-dd" [disabledDays]=d [(ngModel)]="clndr" name="clndr" [touchUI]="true" [readonlyInput]="true" inputId="touchui" [showTime]="true" inputId="time" placeholder="Click to select" [ngModelOptions]="{standalone: true}"></p-calendar>
+              </div>
+            </div>
+            <div class="row" style="margin-left:20px">
+              <div class="col-md-3">
+              <H4><i class="now-ui-icons ui-2_chat-round" ></i>Note : </H4>
+              </div>
+              <div class="col-md-9" style="padding-right:100px;" >
+                <textarea pInputTextarea [ngModelOptions]="{standalone: true}" [(ngModel)]="note" name="note" placeholder="Leave a note for the teacher"></textarea><br><br>
+             </div>
+            </div>
+            <div>
+              <button mat-button matStepperNext (click)="getdatetime()" class="col-md-3" class="btn btn-primary btn-round btn-lg btn-block " style="height:60px;
+              width:200px;">Next <i  class="now-ui-icons arrows-1_minimal-right" ></i></button>
+            </div>     
+          </div>
+                   
+                  </form>
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup" label="Order summary">
+                  <form [formGroup]="secondFormGroup">
+                    
+            
+                      <div class="container" class="card">
+                          <H2>Your order summary :</H2>
+                      <div class="row">
+                      <div class="col-md-8">
+                             <div class="row" style="margin-left:20px; margin-top:20px">
+                                <div class="col-md-2" style="margin-left:50"> 
+                                    <H6 style="color: rgb(114, 114, 114);">Course Title :</H6>
+                                </div> 
+                                <div class="col-md-10" *ngIf="currentcource">
+                                    <H6>{{currentcource.title}}</H6>
+                               </div> 
+                             
+                             </div>
+                             <div class="row" style="margin-left:20px; margin-top:20px">
+                                <div class="col-md-2" style="margin-left:50"> 
+                                    <H6 style="color: rgb(114, 114, 114);">Selected Package :</H6>
+                                </div> 
+                                <div class="col-md-10" *ngIf="currentcource">
+                                    <H6>{{selectedPackage}}</H6>
+                               </div> 
+                             
+                             </div>
+                             <div class="row" style="margin-left:20px; margin-top:20px">
+                                <div class="col-md-2" style="margin-left:50"> 
+                                    <H6 style="color: rgb(114, 114, 114);">Number of hours :</H6>
+                                </div> 
+                                <div class="col-md-10" *ngIf="nbhours">
+                                    <H6>{{nbhours}}</H6>
+                               </div> 
+                             
+                             </div>
+                             <div class="row" style="margin-left:20px; margin-top:20px">
+                                <div class="col-md-2" style="margin-left:50"> 
+                                    <H6 style="color: rgb(114, 114, 114);">Start date :</H6>
+                                </div> 
+                                <div class="col-md-10" *ngIf="finaldate">
+                                    <H6>{{finaldate}}</H6>
+                               </div> 
+                             
+                             </div>
+                             <div class="row" style="margin-left:20px; margin-top:20px">
+                                <div class="col-md-2" style="margin-left:50"> 
+                                    <H6 style="color: rgb(114, 114, 114);">Start time :</H6>
+                                </div> 
+                                <div class="col-md-10" *ngIf="finaltime">
+                                    <H6>{{finaltime}}</H6>
+                               </div> 
+                             </div>
+                             <div class="row" style="margin-left:20px; margin-top:20px">
+                                <div class="col-md-2" style="margin-left:50"> 
+                                    <H6 style="color: rgb(114, 114, 114);">Note :</H6>
+                                </div> 
+                                <div class="col-md-10" *ngIf="note">
+                                    <H6>{{note}}</H6>
+                               </div> 
+                             </div>
+                             <hr>
+                             <div class="row" style="margin-left:20px; margin-top:20px">
+                                <div class="col-md-2" style="margin-left:50"> 
+                                    <H6 style="color: rgb(114, 114, 114);">price : </H6>
+                                </div> 
+                                <div class="col-md-10" *ngIf="currentamount">
+                                    <H6>{{currentamount}} TND</H6>
+                               </div> 
+                             </div>
+                             <div>
+                                <button mat-button matStepperPrevious class="btn btn-primary btn-round btn-lg btn-block " style="height:60px;
+                                width:200px;">Back</button>
+                                <button mat-button matStepperNext class="btn btn-primary btn-round btn-lg btn-block " style="height:60px;
+                                width:200px;">Next</button>
+                              </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card card-user" style="height: 450px;width:300px;"  *ngIf="currentcource">
+                                    <div class="image">
+                                        <img src="{{img}}" alt="...">
+                                    </div>
+                                    <div class="card-body">
+                                            <img *ngIf="coursecreator" class="rounded-circle img-raised" height="80px;" width="80px;" style=" position: absolute;
+                                            top: 150px;
+                                            left: 5; z-index: 10;" src="{{coursecreator.profilepic}}" alt="...">
+                                            <a href="#"> 
+                                                 <h5>{{currentcource.title}}</h5>
+                                            </a>
+                                            <p class="description">
+                                                {{selectedPackage}}
+                                            </p>
+                                          
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                      </div>
+                             
+                  
+                   
+                  </div>
+                  </form>
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup" label="Payment">
+                        <form [formGroup]="secondFormGroup">
+                          
+                  
+                            <div class="container" class="card">
+                                    <h4 style="color: rgb(114, 114, 114);">CHOOSE A PAYMENT METHOD :</h4>
+                                    <a [routerLink]="" (click)="openSite()" > <img alt="Qries" src="https://www.paymee.tn/wp-content/uploads/2019/03/logo-left-small.png"
+                                      width="190" height="70"> </a>
+                                    <div>
+                                    
+                                     
+                                     
+                                      <button mat-button class="btn btn-primary btn-round btn-lg btn-block " style="height:60px;
+                                      width:200px;" matStepperNext (click)="confirm()">Confirm order</button>
+                                      <button mat-button class="btn btn-primary btn-round btn-lg btn-block " style="height:60px;
+                                      width:200px;" matStepperPrevious>Back</button>
+                                      <button mat-button class="btn btn-primary btn-round btn-lg btn-block " style="height:60px;
+                                      width:200px;" (click)="stepper.reset()">Reset</button>
+                                      </div>
+                         
+                        </div>
+                        </form>
+                      </mat-step>
+                <mat-step>
+                  <ng-template matStepLabel>Done</ng-template>
+                  <div *ngIf="payment_status==false"> <img src="assets/img/wrong.png"> </div>
+                  <div *ngIf="payment_status==true"> <img src="assets/img/paymentreceived.png"> </div>
+                  <div *ngIf="payment_status==true"> <H3>Visit your order page from  </H3> <a routerLink="/myorders" class="nav-link" href="#">HERE</a> </div>
+                  <div *ngIf="payment_status==null"> <img src="assets/img/payment-animation.gif"> </div>
+                </mat-step>
+              </mat-horizontal-stepper>
+           
+             
+<p-toast position="bottom-right"></p-toast>
+<livechat-widget licenseId="12707970"></livechat-widget>

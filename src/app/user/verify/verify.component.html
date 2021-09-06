@@ -1,0 +1,62 @@
+
+<div class="page-header" >
+    <div class="page-header-image" style="background-image:url(assets/img/login.jpg)"></div>
+    <div class="container">
+        <div class="col-md-4 content-center">
+            <div class="card card-login card-plain">
+              
+                    <div class="header header-primary text-center">
+                            <ngb-alert type="success"  [dismissible]="false" *ngIf="serverErrorMessages">
+                                    <div class="container">
+                                        <div class="alert-wrapper">
+                                            <button type="button" name="button" class="close" (click)="closeAlert(alert)">
+                                              <span aria-hidden="true">
+                                                  <i class="now-ui-icons ui-1_simple-remove"></i>
+                                              </span>
+                                            </button>
+                                            <div class="message">
+                                                <ng-container >
+                                                  <div class="alert-icon">
+                                                      <i class="now-ui-icons 'objects_support-17'"></i>
+                                                  </div>
+                                                </ng-container>
+                                                <strong> {{serverErrorMessages}}</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ngb-alert> 
+                    </div>
+                   
+                    <p style="font-family :sans-serif">A VERIFICATION CODE WAS SENT TO YOUR EMAIL, WRITE IT DOWN BELOW...</p>
+                    <div class="content">
+                      
+                        <code-input [isCodeHidden]="false"
+                        [codeLength]="4"
+                        (codeChanged)="onCodeChanged($event)"
+                        (codeCompleted)="onCodeCompleted($event)">
+            </code-input>
+                    </div>
+                   
+                    
+                    <div class="footer text-center">
+                  
+                        <input type="submit" value="Verify" class="btn btn-primary btn-round btn-lg btn-block">                  
+                    </div>
+              
+                    <div class="pull-left">
+                        <h6>
+                            <a href="#pablo" class="link">Login</a>
+                        </h6>
+                    </div>
+                    <div class="pull-right">
+                        <h6>
+                            <a href="#pablo" class="link">Need Help?</a>
+                        </h6>
+                    </div>
+               
+            </div>
+        </div>
+    </div>
+    
+</div>
+

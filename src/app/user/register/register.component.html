@@ -1,0 +1,103 @@
+
+<div class="page-header" >
+    <div class="page-header-image" style="background-image:url(assets/img/login.jpg)"></div>
+    <div class="container">
+        <div class="col-md-4 content-center">
+            <div class="card card-login card-plain">
+                <form class="form" #signUpForm="ngForm" (ngSubmit)="verify()">
+                    <div class="header header-primary text-center">
+                            <ngb-alert type="success"  [dismissible]="false" *ngIf="serverErrorMessages">
+                                    <div class="container">
+                                        <div class="alert-wrapper">
+                                            <button type="button" name="button" class="close" (click)="closeAlert(alert)">
+                                              <span aria-hidden="true">
+                                                  <i class="now-ui-icons ui-1_simple-remove"></i>
+                                              </span>
+                                            </button>
+                                            <div class="message">
+                                                <ng-container >
+                                                  <div class="alert-icon">
+                                                      <i class="now-ui-icons 'objects_support-17'"></i>
+                                                  </div>
+                                                </ng-container>
+                                                <strong> {{serverErrorMessages}}</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ngb-alert> 
+                    </div>
+                    <div class="content">
+                      <div class="input-group form-group-no-border input-lg" [ngClass]="{'input-group-focus':focus===true}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">  <i class="now-ui-icons users_circle-08"></i></span>
+                        </div>
+                          <input type="text" class="form-control" placeholder="Fullname" (focus)="focus=true" (blur)="focus=false" #name="ngModel" [(ngModel)]="userService.selectedUser.name" name="name">
+                          <p *ngIf="nameverif" style="color:rgb(161, 6, 6);"> Field can't be empty.</p>
+                      </div>
+                      <div class="input-group form-group-no-border input-lg" [ngClass]="{'input-group-focus':focus1===true}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
+                        </div>
+                          <input type="text" placeholder="Email" class="form-control" (focus)="focus1=true" (blur)="focus1=false" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email">
+                          <p *ngIf="nameverif" style="color:rgb(161, 6, 6);"> Field can't be empty.</p>
+                      </div>
+                      <div class="input-group form-group-no-border input-lg" [ngClass]="{'input-group-focus':focus1===true}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+                        </div>
+                          <input type="text" placeholder="Username" class="form-control" (focus)="focus1=true" (blur)="focus1=false" #username="ngModel" [(ngModel)]="userService.selectedUser.username" name="username">
+                          <p *ngIf="nameverif" style="color:rgb(161, 6, 6);"> Field can't be empty.</p>
+                      </div>
+                      <div class="input-group form-group-no-border input-lg" [ngClass]="{'input-group-focus':focus1===true}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="now-ui-icons ui-1_lock-circle-open"></i></span>
+                        </div>
+                          <input type="password" placeholder="Password" class="form-control" (focus)="focus1=true" (blur)="focus1=false" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password">
+                          <p *ngIf="nameverif" style="color:rgb(161, 6, 6);"> Field can't be empty.</p>
+                      </div>
+                     
+                    </div>
+                   
+                    
+                    <div class="footer text-center">
+                  
+                        <input type="submit" value="Sign Up" class="btn btn-primary btn-round btn-lg btn-block">                  
+                    </div>
+                    <div class="pull-left">
+                        <h6>
+                            <a [routerLink]="login" class="link">Login</a>
+                        </h6>
+                    </div>
+                    <div class="pull-right">
+                        <h6>
+                            <a href="#pablo" class="link">Need Help?</a>
+                        </h6>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<p-dialog [(visible)]="displayBasic2" [style]="{width: '70vw'}" [baseZIndex]="10000">
+    <div class="container" style="margin: 0 auto;
+    width: 80%;text-align:center;">
+    <H4 style="color:black;font-family :-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">EMAIL VERIFICATION</H4>
+        <img src="assets/img/email-verification-hero-image.png" style="width:25%;height:auto; display: block;
+        margin-left: auto;
+        margin-right: auto;"> 
+<p style="font-size: 15px;color:black; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">A verification email was sent to your email, please type it down below : </p>
+<code-input [isCodeHidden]="false"
+[codeLength]="4"
+(codeChanged)="onCodeChanged($event)"
+(codeCompleted)="onCodeCompleted($event,signUpForm)">
+</code-input>
+<H6 *ngIf="codefalse" style="color:red;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">Your code is wrong !</H6>
+<H6 *ngIf="codetrue" style="color:rgb(0, 255, 98);font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">Your code is right !</H6>
+</div>
+
+
+
+</p-dialog>        
+<livechat-widget licenseId="12786543"></livechat-widget> 
+

@@ -1,0 +1,409 @@
+<app-navbarlearner></app-navbarlearner>
+ 
+
+ <div class="wrapper">
+     
+     <div class="page-header page-header-small">
+         <div class="page-header-image rellax-header" data-rellax-speed="-8"
+              style="background-image: url('assets/img/bg_landing.jpg');">
+         </div>
+         <div class="container">
+             <div class="content-center">
+                 <h1 class="title">Learnly</h1>
+                 <h1 class="title">1on1 Online Education Plateform</h1>
+ 
+                 <div class="container h-100">
+                     <div class="d-flex justify-content-center h-100">
+                         <div class="searchbar">
+                             <input class="search_input" type="text" name="" placeholder="Search for a specific course">
+                             <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                         </div>
+                     </div>
+                     <br><br>
+                     <div class="d-flex justify-content-center">
+                         <select class="form-control select"
+                                 style="max-width: 200px"
+                                 [(ngModel)]="currentCategory"
+                                 (change)="onCategoryFilterChanges()">
+                             <option *ngFor="let category of chosenCategory" value="{{category}}"> {{category}}</option>
+                         </select>
+                     </div>
+                     <br>
+ 
+                 </div>
+             </div>
+         </div>
+     </div>
+ 
+ 
+     <div class="section section-about-us">
+ 
+ 
+         <!-- Modal -->
+         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+                     <div class="modal-body">
+                         ...
+                     </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                         <button type="button" class="btn btn-primary">Save changes</button>
+                     </div>
+                 </div>
+             </div>
+         </div>
+ <!--
+         <div class="container h-100">
+             <div class="row align-middle">
+               <div class="col-md-6 col-lg-4 column">
+                 <div class="card gr-1">
+                   <div class="txt">
+                     <h1> DESIGN</h1>
+                     <p>Visual communication </p>
+                   </div>
+                   <a href="#">more</a>
+                   <div class="ico-card">
+                   <i class="fa fa-rebel"></i>
+                 </div>
+                 </div>
+               </div>
+               <div class="col-md-6 col-lg-4 column">
+                 <div class="card gr-1">
+                   <div class="txt">
+                     <h1>Coding</h1>
+                     <p>programming problem-solving</p>
+                   </div>
+                   <a href="#">more</a>
+                   <div class="ico-card">
+                   <i class="fa fa-rebel"></i>
+                 </div>
+                 </div>
+               </div>
+               <div class="col-md-6 col-lg-4 column">
+                 <div class="card gr-1">
+                   <div class="txt">
+                     <h1>Marketing</h1>
+                     <p>Visual communication and problem-solving</p>
+                   </div>
+                   <a href="#">more</a>
+                   <div class="ico-card">
+                   <i class="fa fa-rebel"></i>
+                 </div>
+                 </div>
+               </div>
+               <div class="col-md-6 col-lg-4 column">
+                 <div class="card gr-1">
+                   <div class="txt">
+                     <h1>
+           CORPORATE DESIGN</h1>
+                     <p>Visual communication and problem-solving</p>
+                   </div>
+                   <a href="#">more</a>
+                   <div class="ico-card">
+                   <i class="fa fa-rebel"></i>
+                 </div>
+                 </div>
+               </div>
+               <div class="col-md-6 col-lg-4 column">
+                 <div class="card gr-2">
+                   <div class="txt">
+                     <h1>Web Front-End 
+           SOLUTIONS</h1>
+                     <p>How design is implemented on the web.</p>
+                   </div>
+                   <a href="#">more</a>
+                 <div class="ico-card">
+                   <i class="fa fa-codepen"></i>
+                 </div>
+                 </div>
+               </div>
+               <div class="col-md-6 col-lg-4 column">
+                 <div class="card gr-3">
+                   <div class="txt">
+                     <h1>UX/UI WEBsite AND MOBILE app</h1>
+                     <p>User Interface and User Experience Design.</p>
+                   </div>
+                   <a href="#">more</a>
+                 <div class="ico-card">
+                   <i class="fa fa-empire"></i>
+                 </div>
+                 </div>
+               </div>
+               
+             </div>
+           </div>
+         -->
+
+
+
+<header class="section-header">
+    
+        </header> <!-- section-header.// -->
+        
+        
+        <div class="section section-images">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="hero-images-container">
+                                <img src="assets/img/hero-image-1.png" alt="">
+                            </div>
+                            <div class="hero-images-container-1">
+                                <img src="assets/img/hero-image-2.png" alt="">
+                            </div>
+                            <div class="hero-images-container-2">
+                                <img src="assets/img/hero-image-3.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- ========================= SECTION PAGETOP ========================= -->
+        <section class="section-pagetop bg">
+        <div class="container">
+            <h2 class="title-page">Featured courses</h2>
+            <div class="container">
+                <div class="row">
+                    <img class="col" src="/assets/img/categories/1.png" style="width: 10%;height: auto;" alt="...">
+                    <img class="col" src="/assets/img/categories/2.png" style="width: 10%;height: auto;" alt="...">
+                    <img class="col" src="/assets/img/categories/3.png" style="width: 10%;height: auto;" alt="...">
+                    <img class="col" src="/assets/img/categories/4.png" style="width: 10%;height: auto;" alt="...">
+                    <img class="col" src="/assets/img/categories/5.png" style="width: 10%;height: auto;" alt="...">
+                    <img class="col" src="/assets/img/categories/6.png" style="width: 10%;height: auto;" alt="...">
+                    <img class="col" src="/assets/img/categories/7.png" style="width: 10%;height: auto;" alt="...">
+                    <img class="col" src="/assets/img/categories/8.png" style="width: 10%;height: auto;" alt="...">
+                  </div>
+                  <br>
+                  <div class="row">
+                    <img class="col" src="/assets/img/categories/9.png" style="width: 10%;height: auto;" alt="...">
+                    <img class="col" src="/assets/img/categories/10.png" style="width: 10%;height: auto;" alt="...">
+                    <img class="col" src="/assets/img/categories/11.png" style="width: 10%;height: auto;" alt="...">
+                    <img class="col" src="/assets/img/categories/12.png" style="width: 10%;height: auto;" alt="...">
+                    <img class="col" src="/assets/img/categories/13.png" style="width: 10%;height: auto;" alt="...">
+                    <img class="col" src="/assets/img/categories/14.png" style="width: 10%;height: auto;" alt="...">
+                    <img class="col" src="/assets/img/categories/15.png" style="width: 10%;height: auto;" alt="...">
+                    <img class="col" src="/assets/img/categories/16.png" style="width: 10%;height: auto;" alt="...">
+                  </div>
+            </div>
+            <br>
+            <nav>
+            <ol class="breadcrumb text-white">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active"><a href="#">Featured courses</a></li>
+            </ol>  
+            </nav>
+        </div> <!-- container //  -->
+        </section>
+        <!-- ========================= SECTION INTRO END// ========================= -->
+        
+        <!-- ========================= SECTION CONTENT ========================= -->
+        <section class="section-content padding-y">
+        <div class="container">
+        
+        <div class="row">
+            <aside class="col-md-3">
+                
+        <div class="card">
+            <article class="filter-group">
+            
+               
+            </article> <!-- filter-group  .// -->
+            <article class="filter-group">
+                <header class="card-header">
+                    <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" class="">
+                        <i class="icon-control fa fa-chevron-down"></i>
+                        <h6 class="title">Categories</h6>
+                    </a>
+                </header>
+                <div class="filter-content collapse show" id="collapse_2" style="">
+                    <div class="card-body">
+                        <label class="custom-control custom-checkbox">
+                          <input type="checkbox" checked="" class="custom-control-input">
+                          <div class="custom-control-label">Marketing  
+                              <b class="badge badge-pill badge-light float-right">120</b>  </div>
+                        </label>
+                        <label class="custom-control custom-checkbox">
+                          <input type="checkbox" checked="" class="custom-control-input">
+                          <div class="custom-control-label">Coding 
+                              <b class="badge badge-pill badge-light float-right">15</b>  </div>
+                        </label>
+                        <label class="custom-control custom-checkbox">
+                          <input type="checkbox" checked="" class="custom-control-input">
+                          <div class="custom-control-label">Music 
+                              <b class="badge badge-pill badge-light float-right">35</b> </div>
+                        </label>
+                        <label class="custom-control custom-checkbox">
+                          <input type="checkbox" checked="" class="custom-control-input">
+                          <div class="custom-control-label">Sports 
+                              <b class="badge badge-pill badge-light float-right">89</b> </div>
+                        </label>
+                        <label class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input">
+                          <div class="custom-control-label">Lifestyle 
+                              <b class="badge badge-pill badge-light float-right">30</b>  </div>
+                        </label>
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input">
+                            <div class="custom-control-label">Subjects 
+                                <b class="badge badge-pill badge-light float-right">30</b>  </div>
+                          </label>
+                          <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input">
+                            <div class="custom-control-label">Writing 
+                                <b class="badge badge-pill badge-light float-right">30</b>  </div>
+                          </label>
+            </div> <!-- card-body.// -->
+                </div>
+            </article> <!-- filter-group .// -->
+            <article class="filter-group">
+                <header class="card-header">
+                    <a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
+                        <i class="icon-control fa fa-chevron-down"></i>
+                        <h6 class="title">Price range </h6>
+                    </a>
+                </header>
+                <div class="filter-content collapse show" id="collapse_3" style="">
+                    <div class="card-body">
+                        <input type="range" class="custom-range" min="0" max="100" name="">
+                        <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label>Min</label>
+                          <input class="form-control" placeholder="$0" type="number">
+                        </div>
+                        <div class="form-group text-right col-md-6">
+                          <label>Max</label>
+                          <input class="form-control" placeholder="$1,0000" type="number">
+                        </div>
+                        </div> <!-- form-row.// -->
+                        <button class="btn btn-block btn-primary">Apply</button>
+                    </div><!-- card-body.// -->
+                </div>
+            </article> <!-- filter-group .// -->
+            <article class="filter-group">
+                <header class="card-header">
+                    <a href="#" data-toggle="collapse" data-target="#collapse_5" aria-expanded="false" class="">
+                        <i class="icon-control fa fa-chevron-down"></i>
+                        <h6 class="title">More filter </h6>
+                    </a>
+                </header>
+                <div class="filter-content collapse in" id="collapse_5" style="">
+                    <div class="card-body">
+                        <label class="custom-control custom-radio">
+                          <input type="radio" name="myfilter_radio" checked="" class="custom-control-input">
+                          <div class="custom-control-label">Any condition</div>
+                        </label>
+        
+                        <label class="custom-control custom-radio">
+                          <input type="radio" name="myfilter_radio" class="custom-control-input">
+                          <div class="custom-control-label">Brand new </div>
+                        </label>
+        
+                        <label class="custom-control custom-radio">
+                          <input type="radio" name="myfilter_radio" class="custom-control-input">
+                          <div class="custom-control-label">Used items</div>
+                        </label>
+        
+                        <label class="custom-control custom-radio">
+                          <input type="radio" name="myfilter_radio" class="custom-control-input">
+                          <div class="custom-control-label">Very old</div>
+                        </label>
+                    </div><!-- card-body.// -->
+                </div>
+            </article> <!-- filter-group .// -->
+        </div> <!-- card.// -->
+        
+            </aside> <!-- col.// -->
+            <main class="col-md-9">
+        
+        <header class="border-bottom mb-4 pb-3">
+                <div class="form-inline">
+                    <span class="mr-md-auto">32 Items found </span>
+                    <select class="mr-2 form-control">
+                        <option>Latest items</option>
+                        <option>Trending</option>
+                        <option>Most Popular</option>
+                        <option>Cheapest</option>
+                    </select>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip" title="List view"> 
+                            <i class="fa fa-bars"></i></a>
+                        <a href="#" class="btn  btn-outline-secondary active" data-toggle="tooltip" title="Grid view"> 
+                            <i class="fa fa-th"></i></a>
+                    </div>
+                </div>
+        </header><!-- sect-heading -->
+        
+        <div class="row">
+            <div class="col-md-4" style="text-overflow: ellipsis;   overflow: hidden; white-space: nowrap;" *ngFor="let article of articles">
+                    <div class="card card-user" style="height: 380px;width:300px;">
+                            <div class="image">
+                                <img src="{{article?.image}}" alt="...">
+                            </div>
+                            <div class="card-body">
+                                    <img  class="rounded-circle img-raised" height="80px;" width="80px;" style=" position: absolute;
+                                    top: 150px;
+                                    left: 5; z-index: 10;" src="/assets/img/avatar5.png" alt="...">
+                                    <a href="#"> 
+                                         <h5 style="color:rgb(39, 39, 39);font-weight:bold;">{{article?.title}}</h5>
+                                    </a><hr style="margin-bottom:20px">
+                                    <p class="text-info" style="position: absolute;
+                 bottom: 0; float:left;font-size: 15px;">✰ {{article?.ratingAvg}}</p>
+                 <p style="position: absolute;
+                  float:right;font-size: 10px; color:rgb(78, 78, 78);">{{article?.category}}</p>
+                  <p style="position: absolute;
+                  float:right;font-size: 15px; color:rgb(78, 78, 78);margin-left:180px;">{{article?.basicprice}} TND</p>
+                  <div style="padding-left: 45%;position: absolute;
+                  bottom: 0;">   <button class="btn btn-primary btn-simple btn-round" style="margin-left:30px;" [routerLink]="['',article._id]" type="button">Check</button></div>             
+                </div>
+                            <hr>
+                           
+                        </div>
+            </div> <!-- col.// -->
+        </div> <!-- row end.// -->
+        
+        
+        <nav class="mt-4" aria-label="Page navigation sample">
+          <ul class="pagination">
+            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+        
+            </main> <!-- col.// -->
+        
+        </div>
+        
+        </div> <!-- container .//  -->
+        </section>
+        <!-- ========================= SECTION CONTENT END// ========================= -->
+        
+        <!-- ========================= FOOTER ========================= -->
+        <footer class="section-footer border-top padding-y">
+            <div class="container">
+                <p class="float-md-right"> 
+                    &copy; Copyright 2021 All rights reserved
+                </p>
+                <p>
+                    <a href="#">Terms and conditions</a>
+                </p>
+            </div><!-- //container -->
+        </footer>
+
+
+
+
+
+
+
+        

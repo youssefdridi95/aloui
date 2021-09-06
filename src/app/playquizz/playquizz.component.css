@@ -1,0 +1,232 @@
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
+
+/**************** animations  ********************/
+
+.pulsate-fwd{-webkit-animation:pulsate-fwd .5s ease-in-out both;animation:pulsate-fwd .5s ease-in-out both}
+@-webkit-keyframes pulsate-fwd{0%{-webkit-transform:scale(1);transform:scale(1)}50%{-webkit-transform:scale(1.1);transform:scale(1.1)}100%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes pulsate-fwd{0%{-webkit-transform:scale(1);transform:scale(1)}50%{-webkit-transform:scale(1.1);transform:scale(1.1)}100%{-webkit-transform:scale(1);transform:scale(1);box-shadow:0 0 20px 0 rgba(0,0,0,.35)}}
+
+
+.slide-in-left{animation:slide-in-left 1s cubic-bezier(.25,.46,.45,.94) both}
+@keyframes slide-in-left{0%{transform:translateX(-1000px);opacity:0}100%{transform:translateX(0);opacity:1}}
+.slide-out-right{animation:slide-out-right 1s cubic-bezier(.55,.085,.68,.53) both}
+@keyframes slide-out-right{0%{transform:translateX(0);opacity:1}100%{transform:translateX(1000px);opacity:0}}
+body{
+	background:#fff;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+}
+
+.container{
+	width: 100%;	
+}
+
+.inner{
+	width:90%;
+	margin:0 auto;
+	/* height: max-content; */
+}
+
+ul{
+	list-style-type: none;
+    margin-left: -40px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-between;
+    height: inherit;
+}
+
+h2{
+  /* margin-top:50px; */
+}
+.simpleListAnswer:active{
+	background-color: #84f272;
+}
+.simpleListAnswer:hover{
+	/* background:#fff195; */
+	cursor:pointer;
+	animation:pulsate-fwd .5s ease-in-out  both
+}
+.simpleListAnswer{
+	transition: transform .2s;
+
+	display: inline-block;
+    border-radius: 15px;
+    width: 48%;
+    background: rgba(255,255,255,0.4);
+    padding: 9px;
+    margin-top: 12px;
+    height: 80px;
+
+	/* border:1px solid #d8d8d8; */
+}
+.simpleListText{
+	margin-left:8px;
+	font-size: 19px;
+	color: #3d3d3d;
+	text-align: center;
+}
+
+/***************************ANSWER REVEAL******************/
+.quizzAnswerC,.quizzAnswerF,.finalResult{
+	background: #fefefe;
+	border: 1px solid #ddd;
+}
+
+.answerReveal{
+	display: none;
+	width: 100%;
+}
+.answerHeader div{
+	color: #84f272;
+	margin-top:10px;
+}
+#bravo, #sorry{
+	width:100%;
+	margin-left:20px;
+	margin-top:30px;
+}
+.answerHeader{
+	margin-left:20px;
+	width:100%;
+}
+h3.correctMessage{
+	color: #88f078;
+	font-size: 30px;
+}
+h3.wrongMessage{
+	color:#ff1f1f;
+	font-size: 30px;
+}
+
+.fa.fa-check-circle, .fa.fa-times-circle {
+	padding-right:10px;
+}
+.correctAnswer{
+	background:#88f078;
+}
+
+.wrongAnswer{
+	background:#ff1f1f;
+}
+
+.fade{
+	opacity:.6;
+	cursor:default;
+}
+
+/*************************FINAL RESULT******************************/
+.finalResult{
+	width: 100%;
+	height:300px;
+	padding:0 10px;
+	margin-top:30px;
+	display: none;
+}
+
+.finalResult h4{
+	color:#797979;
+}
+
+.resultContainer p{
+	font-size:25px;
+}
+
+#halfText,#halfImage{
+	width:50%;
+	float:left;
+}
+
+#halfImage{
+	margin-top:-40px;
+}
+#halfImage img{
+  width:100%;
+}
+.quizzGame{
+	padding-top: 150px;
+	background-color: rgba(255, 255, 255, 0.6);
+	height: 100vh;
+
+}
+.wrapper{
+	background-image: url("./../../assets/school-education-seamless-pattern-education-2531425.png");
+	/* background-image: ; */
+	/* background-size: cover; */
+	background-size: 20%;
+}
+.generalQuizzInfo{
+	/* border: 1px solid black; */
+	box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 50%);
+
+	border-radius: 7px;
+    display: flex;
+    align-items: center;
+    height: 25px;
+	background: rgb(255,234,190);
+	background: linear-gradient(180deg, rgba(120,247,254,100) 0%, rgba(120,247,254,1) 100%);
+	--bs-gutter-x:none !important;
+
+}
+.quizzBody{
+	box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 50%);
+	border-radius: 15px;
+padding: 2%;
+margin-top: 10px;
+height: 70vh;
+padding-top: 5%;
+}
+.questionText{
+	font-size: 2em;
+}
+.quizzBody{
+	background: rgb(120,247,254);
+background: linear-gradient(180deg, rgba(120,247,254,1) 0%, rgba(59,196,207,1) 100%);
+}
+
+.answerBody{
+	height: 70%;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ***************************loader  *******************/
+.lds-dual-ring {
+	position: absolute;
+    top: 45%;
+    left: 46%;
+  }
+  .loaderText{
+	position: absolute;
+    top: 65%;
+    left: 38%;
+	color: white;
+  }
+  .lds-dual-ring:after {
+	content: " ";
+	display: block;
+    width: 100px;
+    height: 100px;
+	margin: 8px;
+	border-radius: 50%;
+	border: 11px solid #fff;
+	border-color: #fff transparent #fff transparent;
+	animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+	0% {
+	  transform: rotate(0deg);
+	}
+	100% {
+	  transform: rotate(360deg);
+	}
+  }
+  
+
+
+
+

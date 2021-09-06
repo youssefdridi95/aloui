@@ -1,0 +1,9 @@
+    <div  class="card mb-4 text-white bg-dark">
+        <img class="card-img-top" src="https://monpetitdev.fr/wp-content/uploads/2019/05/learn-C-sharp-programming.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{article?.title}}</h5>
+            <p class="card-text">{{article?.description}}</p>
+            <a  class="btn btn-secondary" [routerLink]="['',article._id]">Check course</a>
+            <a class="card-title" style="margin-left: 60px;">{{article?.priceperhour}}</a>
+        </div>
+    </div>

@@ -1,0 +1,80 @@
+<div *ngIf="userDetails">
+<div style="margin: 0 auto;
+     width: 600px; padding-left:150px ">
+<div style="margin: 0 auto;" class="flex-container">
+    <div style="padding-top: 25px;"><h6>Fullname : </h6></div>
+    <div style="padding-top: 20px;" > <input type="text" [(ngModel)]="mname" value="{{userDetails.name}}" class="form-control" /></div>
+    <div style="padding-bottom: 5px;"> <button class="btn btn-default btn-tooltip" placement="right" ngbTooltip="Choose a title for your course.">
+           ?
+        </button> </div>
+</div>
+<div style="margin: 0 auto;" class="flex-container">
+    <div style="padding-top: 25px;"><h6>Username : </h6></div>
+    <div style="padding-top: 20px;"> <input type="text" [(ngModel)]="musername" value="{{userDetails.username}}" class="form-control" /></div>
+    <div style="padding-bottom: 5px;"> <button class="btn btn-default btn-tooltip" placement="right" ngbTooltip="Choose a title for your course.">
+           ?
+        </button> </div>
+</div>
+<div style="margin: 0 auto;" class="flex-container">
+    <div style="padding-top: 25px;"><h6>Email :</h6></div>
+    <div style="padding-top: 20px;"> <input type="text" [(ngModel)]="memail" value="{{userDetails.email}}" class="form-control" /></div>
+    <div style="padding-bottom: 5px;"> <button class="btn btn-default btn-tooltip" placement="right" ngbTooltip="Choose a title for your course.">
+           ?
+        </button> </div>
+</div>
+<button class="btn btn-primary btn-round btn-lg btn-block" (click)="apply()">Apply</button>
+<br>
+<hr>
+<div style="margin: 0 auto;" class="flex-container">
+    <div style="padding-top: 25px;"><h6>Password : </h6></div>
+    <div style="padding-top: 20px;"> <input type="password" [(ngModel)]="mpassword" value="" placeholder="Title" class="form-control" /></div>
+   <div class="col-md-5"> <button  (click)="open(classic,'' , '')" class="btn btn-primary btn-sm"  style="float:right;" >Change password
+
+    </button></div>
+    <ng-template #classic let-c="close" let-d="dismiss">
+        <div class="modal-header justify-content-center">
+            <button type="button" class="close" (click)="d('Cross click')">
+                <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <h4 class="title title-up">Change password</h4>
+        </div>
+        <div class="modal-body">
+                <div class="header header-primary text-center">
+                        <ngb-alert type="danger"  [dismissible]="false" *ngIf="serverErrorMessages">
+                                <div class="container">
+                                    <div class="alert-wrapper">
+                                        <button type="button" name="button" class="close" (click)="closeAlert(alert)">
+                                          <span aria-hidden="true">
+                                              <i class="now-ui-icons ui-1_simple-remove"></i>
+                                          </span>
+                                        </button>
+                                        <div class="message">
+                                            <ng-container >
+                                              <div class="alert-icon">
+                                                  <i class="now-ui-icons 'objects_support-17'"></i>
+                                              </div>
+                                            </ng-container>
+                                            <strong> {{serverErrorMessages}}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ngb-alert> 
+                </div>
+            <div style="padding-top: 25px;"><h6>Old password : </h6></div>
+            <div style="padding-top: 20px;"> <input type="password" [(ngModel)]="pass_confirm" value="" placeholder="Type your old password " class="form-control" /></div>
+            <div style="padding-top: 25px;"><h6>New password : </h6></div>
+            <div style="padding-top: 20px;"> <input type="password" [(ngModel)]="new_pass1" value="" placeholder="Type your new password " class="form-control" /></div>
+            <div style="padding-top: 25px;"><h6>Repeat new password : </h6></div>
+            <div style="padding-top: 20px;"> <input type="password" [(ngModel)]="new_pass2" value="" placeholder="Retype your new password " class="form-control" /></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary btn-sm" (click)="Changepassword()" style="float:right;" >Apply</button>    
+            <button type="button" class="btn btn-danger" (click)="c('Close click')">Close</button>
+        </div>
+    </ng-template>
+   
+         
+</div>
+
+</div>
+</div>

@@ -1,0 +1,178 @@
+*{
+    padding: 0;
+    margin: 0;
+	animation: all 3000;
+}
+
+.wrapper {
+    margin-top: 76px;
+        
+}
+.wrapper div{
+    /* height: 100vh; */
+    /* border: 1px solid black ; */
+}
+
+.menu{
+    background-color: rgba(128, 128, 128, 0.199);
+    padding: 0;
+    /* height:  100vh; */
+}
+.menu ul{
+margin: 0;
+padding: 0;
+}
+.menu li{
+    padding: 20px;
+    /* width: 100%; */
+    border: 1px solid silver;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.myButton {
+	box-shadow:inset 0px -3px 7px 0px #29bbff;
+	background:linear-gradient(to bottom, #32c1f9 5%, #0688fa 100%);
+	background-color:#32c1f9;
+	border-radius:20px;
+	/* border:1px solid #0b0e07; */
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:21px;
+	padding:10px 44px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+	background-color:#0688fa;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.selected{
+    display: block !important;
+}
+.generalInfo{
+	width: 80%;
+	margin: auto;
+}
+.oneQuizz{
+	/* padding-top: 100px; */
+}
+.quizzbanner{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: top center;
+    width: 100%;
+    background: linear-gradient(
+0deg
+, rgb(0 0 0 / 62%), rgb(0 0 0 / 0%)), url(https://images.unsplash.com/photo-1518384401463-d3876163c195?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80);
+    background-size: cover;
+    height: 243px;
+}
+.quizzBannerTitle{
+	font-size: 3rem;
+    position: relative;
+    color: whitesmoke;
+    top: -120px;
+    left: 36%;
+}
+.center-center{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.generalInfo .center-center .form-group *{
+	border-radius: unset;
+	min-width:400px;
+	/* height: 50px; */
+}
+.desctiptionField{
+	height: 80px;
+}
+.generalInfo .form-group{
+	padding: 10px;
+}
+input, select{
+	border-color: black;
+	border-radius: unset;
+}
+.answersArray > div{
+	display: inline;
+	width: 50%;
+	padding: 20px;
+	border: solid 3px rgba(255, 255, 255, 0.5) ;
+}
+.oneAnswer{
+	display: flex;
+	flex-direction: row-reverse;
+	
+}
+.oneAnswer input{
+	border: none;
+	padding: unset;
+	font-size: 1.5rem;
+
+}
+.oneAnswer input::placeholder {
+	font-size: 2rem;
+	/* background-color: #32C1F9; */
+  }
+  .oneAnswer input {
+	height:unset
+  }
+input[type="radio"] {
+	zoom: 3;
+	margin-right: 3px;
+  }
+.question{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	/* width: 80%; */
+}
+  .question .form-group{
+	  width: 80%;
+  }
+.questionField{
+	border-top: unset;
+    border-left: unset;
+    border-right: unset;
+	text-align: center;
+	font-size: 1.5rem;
+
+}
+.questionField::placeholder{
+	font-size: 2rem;
+
+}
+.answersGroup{
+	display: flex;
+	font-size: 1.5em;
+
+}
+.answersGroup label{
+	padding: 10px;
+}
+.answersScroll{
+
+}
+.btnSucc{
+	padding: 4%;
+    border-radius: 10px;
+	margin: 5px;
+}
+
+.controlBtn{
+	margin: 10px;
+}

@@ -1,0 +1,168 @@
+<div class="wrapper">
+    <div class="page-header page-header-small">
+        <div class="page-header-image rellax-header" data-rellax-speed="-8" style="background-image: url('assets/img/bg5.jpg') ;">
+        </div>
+        <div class="container">
+            <div class="content-center">
+                <br><br>
+              
+                
+               
+               
+               
+              
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+         
+         
+          <!-- Nav tabs -->
+
+          <div class="card">
+              <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+                  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+                </button>
+                <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                  <mat-step [stepControl]="firstFormGroup">
+                    <form [formGroup]="firstFormGroup">
+                      <ng-template matStepLabel>Fill out your name</ng-template>
+                      <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                      </mat-form-field>
+                      <div>
+                        <button mat-button matStepperNext>Next</button>
+                      </div>
+                    </form>
+                  </mat-step>
+                  <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+                    <form [formGroup]="secondFormGroup">
+                      <mat-form-field>
+                        <mat-label>Address</mat-label>
+                        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                               required>
+                      </mat-form-field>
+                      <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext>Next</button>
+                      </div>
+                    </form>
+                  </mat-step>
+                  <mat-step>
+                    <ng-template matStepLabel>Done</ng-template>
+                    <p>You are now done.</p>
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button (click)="stepper.reset()">Reset</button>
+                    </div>
+                  </mat-step>
+                </mat-horizontal-stepper> 
+          </div>
+      
+          <h3 class="title">About me</h3>
+          <h5 class="description">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</h5>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="title text-center">My Portfolio</h4>
+                      <ngb-tabset [justify]="'center'" type="pills" class="nav nav-pills nav-pills-primary  nav-pills-just-icons justify-content-center tab-space">
+                          <ngb-tab>
+                            <ng-template ngbTabTitle>
+                              <i class="now-ui-icons design_image"></i>
+                            </ng-template>
+                              <ng-template ngbTabContent>
+                                <div class="row">
+                                  <div class="col-md-10 ml-auto mr-auto">
+                                      <div class="row collections">
+                                          <div class="col-md-6">
+                                              <img src="assets/img/bg1.jpg" alt="" class="img-raised">
+                                              <img src="assets/img/bg3.jpg" alt="" class="img-raised">
+                                          </div>
+                                          <div class="col-md-6">
+                                              <img src="assets/img/bg8.jpg" alt="" class="img-raised">
+                                              <img src="assets/img/bg7.jpg" alt="" class="img-raised">
+                                          </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </ng-template>
+                          </ngb-tab>
+                          <ngb-tab>
+                            <ng-template ngbTabTitle>
+                              <i class="now-ui-icons location_world"></i>
+                            </ng-template>
+                              <ng-template ngbTabContent>
+                                <div class="row">
+                                  <div class="col-md-10 ml-auto mr-auto">
+                                      <div class="row collections">
+                                          <div class="col-md-6">
+                                              <img src="assets/img/bg6.jpg" class="img-raised">
+                                              <img src="assets/img/bg11.jpg" alt="" class="img-raised">
+                                          </div>
+                                          <div class="col-md-6">
+                                              <img src="assets/img/bg7.jpg" alt="" class="img-raised">
+                                              <img src="assets/img/bg8.jpg" alt="" class="img-raised">
+                                          </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </ng-template>
+                          </ngb-tab>
+                          <ngb-tab>
+                            <ng-template ngbTabTitle>
+                              <i class="now-ui-icons sport_user-run"></i>
+                            </ng-template>
+                              <ng-template ngbTabContent>
+                                <div class="row">
+                                  <div class="col-md-10 ml-auto mr-auto">
+                                      <div class="row collections">
+                                          <div class="col-md-6">
+                                              <img src="assets/img/bg3.jpg" alt="" class="img-raised">
+                                              <img src="assets/img/bg8.jpg" alt="" class="img-raised">
+                                          </div>
+                                          <div class="col-md-6">
+                                              <img src="assets/img/bg7.jpg" alt="" class="img-raised">
+                                              <img src="assets/img/bg6.jpg" class="img-raised">
+                                          </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </ng-template>
+                          </ngb-tab>
+                      </ngb-tabset>
+                </div>
+            </div>
+    
+    <footer class="footer footer-default">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="https://www.creative-tim.com">
+                            Creative Tim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.creative-tim.com/about-us">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://blog.creative-tim.com">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md">
+                            MIT License
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+        </div>
+    </footer>
+</div>
+<p-toast position="bottom-right"></p-toast>
+<livechat-widget licenseId="12707970"></livechat-widget>

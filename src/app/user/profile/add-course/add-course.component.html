@@ -1,0 +1,116 @@
+
+<h1 style="left: 150px;">Add a new course</h1>             
+<form (submit)="upload(form)" #form="ngForm" action="/" enctype="multipart/form-data">              
+
+                            <div style="margin: 0 auto;" class="flex-container">
+                                <div style="padding-top: 25px;"><h5>Title : </h5></div>
+                                <div style="padding-top: 20px;"> <input type="text" ngModel name="title" value="" placeholder="Title" class="form-control" /></div>
+                                <div style="padding-bottom: 5px;"> <button class="btn btn-default btn-tooltip" placement="right" ngbTooltip="Choose a title for your course.">
+                                       ?
+                                    </button> </div>
+                            </div>
+                            
+                            <div style="margin: 0 auto;" class="flex-container">
+                                    <div style="padding-top: 25px;"><h5>Description : </h5></div>
+                                    <div style="padding-top: 20px;"> <input ngModel name="description" rows="2" cols="25"  style="height:200px;" type="text" value="" placeholder="Description" class="form-control" /></div>
+                                    <div style="padding-bottom: 5px;"> <button class="btn btn-default btn-tooltip" placement="right" ngbTooltip="Choose a description for your course.">
+                                           ?
+                                        </button> </div>
+                            </div>
+                            
+                    <div style="margin: 0 auto;" class="flex-container">
+                            <div style="padding-top: 25px;"><h5>Category : </h5></div>
+                            <div class="col-sm-6 col-lg-3">
+                                <p-cascadeSelect [(ngModel)]="selectedCategory" name="selectedCategory" [options]="categories" optionLabel="cname" optionGroupLabel="name" 
+                                [optionGroupChildren]="['subs', 'cats']" [style]="{'minWidth': '14rem'}" placeholder="Choose an option"></p-cascadeSelect>
+                                </div>
+                            <div style="padding-bottom: 5px;"> <button class="btn btn-default btn-tooltip" placement="right" ngbTooltip="Choose a category for your course.">
+                                   ?
+                                </button> </div>
+                    </div><br>
+                    <div style="margin: 0 auto;padding-left: 8px;" class="flex-container"><h5>Packages : </h5></div>
+        <!-- Tabs with Background on Card -->
+        <div class="card" class="col-sm-6 col-lg-6">
+                <div class="nav-tabs-navigation" data-tabs-color="orange">
+                    <div class="nav-tabs-wrapper">
+                        <ngb-tabset [justify]="'center'" class="text-center" [destroyOnHide]="false" >
+                            <ngb-tab title="Basic">
+                              <ng-template ngbTabContent>
+                                 <div class="text-muted">Description :</div>
+                                <textarea pInputTextarea [(ngModel)]="basicdesc" name="basicdesc"></textarea><br><br>
+                                <div class="text-muted">Price :</div>
+                                <p-inputNumber name="basicprice" [(ngModel)]="basicprice" [showButtons]="true" mode="currency" currency="TND"></p-inputNumber><br><br>
+                                <div class="text-muted">Number of hours : {{basichours}}</div><br>
+                                <p-slider [(ngModel)]="basichours" name="basichours" ></p-slider>
+                              </ng-template>
+                            </ngb-tab>
+                            <ngb-tab title="Standard">
+                              <ng-template ngbTabContent>
+                                        <div class="text-muted">Description :</div>
+                                        <textarea pInputTextarea [(ngModel)]="standarddesc" name="standarddesc"></textarea><br><br>
+                                        <div class="text-muted">Price :</div>
+                                        <p-inputNumber name="standardprice" [(ngModel)]="standardprice" [showButtons]="true" mode="currency" currency="TND"></p-inputNumber><br><br>
+                                        <div class="text-muted">Number of hours : {{standardhours}}</div><br>
+                                        <p-slider [(ngModel)]="standardhours" name="standardhours" ></p-slider>
+                              </ng-template>
+                            </ngb-tab>
+                            <ngb-tab title="Premium">
+                              <ng-template ngbTabContent>
+                                        <div class="text-muted">Description :</div>
+                                        <textarea pInputTextarea [(ngModel)]="premiumdesc" name="premiumdesc"></textarea><br><br>
+                                        <div class="text-muted">Price :</div>
+                                        <p-inputNumber name="premiumprice" [(ngModel)]="premiumprice" [showButtons]="true" mode="currency" currency="TND"></p-inputNumber><br><br>
+                                        <div class="text-muted">Number of hours : {{premiumhours}}</div><br>
+                                        <p-slider [(ngModel)]="premiumhours" name="premiumhours" ></p-slider>
+                              </ng-template>
+                            </ngb-tab>
+                        </ngb-tabset>
+                    </div>
+                </div>
+              </div>
+              <!-- End Tabs on plain Card -->
+                    <div style="margin: 0 auto;" class="flex-container">
+                            <div style="padding-top: 25px;"><h5>Availability : </h5></div>
+                            <h6 style="padding-top: 40px;">from :</h6>
+                            <div class="col-sm-6 col-lg-3">
+                                <p-dropdown [options]="days" [(ngModel)]="selecteddayfrom" name="selecteddayfrom" optionLabel="name" placeholder="Select a day"></p-dropdown>
+                                </div>
+                                <h6  style="padding-top: 40px;">to :</h6>
+                                <div class="col-sm-6 col-lg-3">
+                                        <p-dropdown [options]="days" [(ngModel)]="selecteddayto" name="selecteddayto" optionLabel="name" placeholder="Select a day"></p-dropdown>
+                                            
+                                            </div>
+                            <div style="padding-bottom: 5px;"> <button class="btn btn-default btn-tooltip" placement="right" ngbTooltip="Choose when are you available to deliever the course.">
+                                   ?
+                                </button> </div>
+                    </div>
+                    <div style="margin: 0 auto;" class="flex-container">
+                            <div style="padding-top: 25px;"><h5>Image : </h5></div>
+                        <div class="input_d">
+                           
+                           <div style="padding-top: 5px;" > <button class="btn btn-primary btn-round"  type="button" (click)="fileInput.click()"> <i class="now-ui-icons arrows-1_share-66"></i>
+                                <span>Upload</span>
+                                <input #fileInput type="file" ngModel name="file" (change)="onImgSelected($event)" style="display:none;" />
+                              </button></div>
+                          </div>
+                          <div style="padding-bottom: 5px;"> <button class="btn btn-default btn-tooltip" placement="right" ngbTooltip="Choose a descriptive image for your course.">
+                                ?
+                             </button> </div>
+                        </div>
+                        <div class="blockquote blockquote-primary" class="col-sm-6 col-lg-3" *ngIf="imgURL">  <img class="rounded img-raised"  [src]="imgURL" height="100" width="100" *ngIf="imgURL"> </div><br><br>
+
+                        <div class="col-sm-6 col-lg-3" style=" margin: 0;
+                        position: absolute;
+                        
+                        left: 50%;
+                        -ms-transform: translate(-50%, -50%);
+                        transform: translate(-50%, -50%);">
+                                <button class="btn btn-primary btn-round btn-lg btn-block" type="submit">Add course</button>
+                              
+                               
+                              </div>
+
+                            </form>  
+                            <p-toast position="bottom-right"></p-toast>
+                    
+               

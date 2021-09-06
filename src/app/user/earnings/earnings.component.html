@@ -1,0 +1,98 @@
+<app-navbarteacher></app-navbarteacher>
+
+<br>
+<br>
+<br>
+<br>
+<h1>EARNINGS :</h1>
+<div class="cardg green" *ngIf="userDetails" style="text-align: center;margin-left:500px;margin-bottom:30px;">
+    <p>YOUR BALANCE :</p>   
+    <h1>{{userDetails.balance}} </h1><h4>TND</h4>
+    <button (click)="showBasicDialog2(userDetails.balance,userDetails.email)" class="btn btn-primary btn-round" type="button">
+            <i class="now-ui-icons business_money-coins
+
+            "></i> Withdraw
+        </button>
+      </div>
+      <div class="card">
+            <div class="nav-tabs-navigation">
+                  <div class="nav-tabs-wrapper">
+                      <ngb-tabset [justify]="'center'" class="text-center">
+                          <ngb-tab>
+                            <ng-template ngbTabTitle>
+                              <i class="now-ui-icons arrows-1_refresh-69"></i> TRANSACTIONS
+                            </ng-template>
+                              <ng-template ngbTabContent>
+                               
+                                      <p-table *ngIf="all" [value]="all">
+                                              <ng-template pTemplate="header">
+                                                  <tr>
+                                                      <th>TYPE</th>
+                                                      <th>ORDER_ID</th>
+                                                      <th>DATE</th>
+                                                      <th>TIME</th>
+                                                      <th>TOTAL</th>
+                                      
+                                                  </tr>
+                                              </ng-template>
+                                              <ng-template pTemplate="body" let-order>
+                                                  <tr>
+                                                      <td><div *ngIf="order.sendermail==userDetails.email; else elseBlock"> <img alt="Brand" src="assets/img/arrowup.svg" width="20px" height="20px"></div></td>
+                                                      <td>{{order._id}}</td>
+                                                      <td>{{order.date}}</td>
+                                                      <td>{{order.time}}</td>
+                                                      <td>{{order.totalprice}}</td>
+     
+                                                      
+                                                  </tr>
+                                              </ng-template>
+                                          </p-table>
+                              </ng-template>
+                          </ngb-tab>
+                      </ngb-tabset>
+                  </div>
+              </div>
+            </div>
+            <p-dialog header="MONEY WITHDRAWAL" [(visible)]="displayBasic2" [style]="{width: '70vw'}" [baseZIndex]="10000">
+                    <div class="row">
+                            <div class="col-6"><H5>CHOOSE A WITHDRAWAL METHOD :</H5></div>
+                            <div class="col-6"></div>
+                    </div>
+                    <ngb-tabset type="pills" class="nav nav-pills nav-pills-primary justify-content-start tab-space nav-pills-just-icons">
+                            <ngb-tab>
+                              <ng-template ngbTabTitle>
+                                    <img class="rounded-circle img-raised" src="assets/img/credit/ppl.png" style="margin-top:14px;"  width="35px" height="30px">
+                              </ng-template>
+                                <ng-template ngbTabContent>
+                                   <p style="margin-top:40px;">YOU CHOSE PAYPAL.</p> 
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab>
+                              <ng-template ngbTabTitle>
+                                    <img class="rounded-circle img-raised" src="assets/img/credit/d17.png" style="margin-top:14px;"  width="35px" height="30px">
+                              </ng-template>
+                                <ng-template ngbTabContent>
+                                        <p style="margin-top:40px;">YOU CHOSE D17.</p> 
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab>
+                                <ng-template ngbTabTitle>
+                                        <img class="rounded-circle img-raised" src="assets/img/credit/runpay.png" style="margin-top:14px;"  width="35px" height="30px">
+                                </ng-template>
+                                <ng-template ngbTabContent>
+                                        <p style="margin-top:40px;">YOU CHOSE RUNPAY.</p> 
+                                </ng-template>
+                            </ngb-tab>
+                        </ngb-tabset>
+                        <div class="row">
+                                <div class="col-4"><p>Enter your email :</p></div>
+                                <div class="col-4"> <input type="text" value="" placeholder="Enter your email" class="form-control" /></div>
+
+                        </div>
+                        <button (click)="withdraw()" class="btn btn-primary btn-round" type="button">
+                                <i class="now-ui-icons business_money-coins
+                    
+                                "></i> Withdraw now
+                            </button>
+                       
+            </p-dialog>         

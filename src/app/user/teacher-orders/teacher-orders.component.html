@@ -1,0 +1,201 @@
+<app-navbarteacher></app-navbarteacher>
+<br><br><br><br>
+<div class="card">
+        &nbsp;&nbsp; <h1 style="margin-left:200px">Manage orders : </h1>
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                    <ngb-tabset [justify]="'center'" class="text-center">
+                        <ngb-tab>
+                          <ng-template ngbTabTitle>
+                            <i class="now-ui-icons arrows-1_refresh-69"></i> Awaiting confirmation
+                          </ng-template>
+                            <ng-template ngbTabContent>
+                                    <p-table *ngIf="awaiting" [value]="awaiting">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                    <th>BUYER</th>
+                                                    <th>COURSE</th>
+                                                    <th>DUE ON</th>
+                                                    <th>TOTAL</th>
+                                                    <th>STATUS</th>
+                                                    <th> </th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-order>
+                                                <tr>
+                                                    <td>{{order.senderusername}}</td>
+                                                    <td><img alt="Brand" src="{{order.image}}" width="40px" height="40px" class="rounded img-raised">{{order.coursetitle}}</td>
+                                                    <td>{{order.startdate}}</td>
+                                                    <td>{{order.totalprice}}</td>
+                                                    <td><span class="badge badge-warning">{{order.orderstatus}}</span></td>
+                                                 <td><button class="btn btn-primary btn-simple btn-round" (click)="showBasicDialog2(order)">Details</button></td>
+                                                    
+                                            </tr>
+                                            </ng-template>
+                                        </p-table>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab>
+                          <ng-template ngbTabTitle>
+                            <i class="now-ui-icons media-1_button-play"></i> Active
+                          </ng-template>
+                            <ng-template ngbTabContent>
+                                    <p-table *ngIf="active" [value]="active">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                    <th>BUYER</th>
+                                                    <th>COURSE</th>
+                                                    <th>DUE ON</th>
+                                                    <th>TOTAL</th>
+                                                    <th>STATUS</th>
+                                                    <th></th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-order>
+                                                <tr>
+                                                    <td>{{order.senderusername}}</td>
+                                                    <td><img alt="Brand" src="{{order.image}}" width="40px" height="40px" class="rounded img-raised">{{order.coursetitle}}</td>
+                                                    <td>{{order.startdate}}</td>
+                                                    <td>{{order.totalprice}}</td>
+                                                    <td><span class="badge badge-success">{{order.orderstatus}}</span></td>
+                                                    <td><button class="btn btn-primary btn-simple btn-round" (click)="showBasicDialog2(order)">Details</button></td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab>
+                          <ng-template ngbTabTitle>
+                              <i class="now-ui-icons ui-1_check"></i> Completed
+                          </ng-template>
+                            <ng-template ngbTabContent>
+                                    <p-table *ngIf="completed" [value]="completed">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                    <th>BUYER</th>
+                                                    <th>COURSE</th>
+                                                    <th>DUE ON</th>
+                                                    <th>TOTAL</th>
+                                                    <th>STATUS</th>
+                                                    <th></th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-order>
+                                                <tr>
+                                                    <td>{{order.senderusername}}</td>
+                                                    <td><img alt="Brand" src="{{order.image}}" width="40px" height="40px" class="rounded img-raised">{{order.coursetitle}}</td>
+                                                    <td>{{order.startdate}}</td>
+                                                    <td>{{order.totalprice}}</td>
+                                                    <td><span class="badge badge-success">{{order.orderstatus}}</span></td>
+                                                    <td><button class="btn btn-primary btn-simple btn-round" (click)="showBasicDialog2(order)">Details</button></td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab>
+                          <ng-template ngbTabTitle>
+                            <i class="now-ui-icons ui-1_simple-remove"></i> Cancelled
+                          </ng-template>
+                            <ng-template ngbTabContent>
+                                    <p-table *ngIf="cancelled" [value]="cancelled">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                    <th>BUYER</th>
+                                                    <th>COURSE</th>
+                                                    <th>DUE ON</th>
+                                                    <th>TOTAL</th>
+                                                    <th>STATUS</th>
+                                                    <th></th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-order>
+                                                <tr>
+                                                    <td>{{order.senderusername}}</td>
+                                                    <td><img alt="Brand" src="{{order.image}}" width="40px" height="40px" class="rounded img-raised">{{order.coursetitle}}</td>
+                                                    <td>{{order.startdate}}</td>
+                                                    <td>{{order.totalprice}}</td>
+                                                    <td><span class="badge badge-danger">{{order.orderstatus}}</span></td>
+                                                    <td><button class="btn btn-primary btn-simple btn-round" (click)="showBasicDialog2(order)">Details</button></td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                            </ng-template>
+                        </ngb-tab>
+                       
+                    </ngb-tabset>
+                </div>
+            </div>
+          </div>
+          <p-dialog header="ORDER DETAILS" *ngIf="currentorder" [(visible)]="displayBasic2" [style]="{width: '70vw'}" [baseZIndex]="10000">
+          <div style="border-style: dotted;">
+            <span><H3 style="display:inline;">ORDER # {{currentorder._id}}</H3>&nbsp;&nbsp;<span style="display:inline;" class="badge badge-warning">{{currentorder.orderstatus}}</span></span>
+           
+            <H3 style="float:right;">{{currentorder.totalprice}} TND</H3>   
+        </div>
+        <H6>Meet link : </H6>
+            <a href="{{currentorder.link}}">{{currentorder.link}}</a>
+        <div class="row" style="margin-left:20px; margin-top:20px">
+            <div class="col-md-2" style="margin-left:50"> 
+           
+            </div> 
+            <div class="col-md-10" *ngIf="currentorder">
+                <img alt="Brand" src="{{currentorder.image}}" width="100px" height="100px" class="rounded img-raised">
+           </div> 
+        </div>
+        <div class="row" style="margin-left:20px; margin-top:20px">
+            <div class="col-md-2" style="margin-left:50"> 
+                <H6 style="color: rgb(114, 114, 114);">Course Title :</H6>
+            </div> 
+            <div class="col-md-10" *ngIf="currentorder">
+                <H6>{{currentorder.coursetitle}}</H6>
+           </div> 
+        </div>
+        <div class="row" style="margin-left:20px; margin-top:20px">
+            <div class="col-md-2" style="margin-left:50"> 
+                <H6 style="color: rgb(114, 114, 114);">Package :</H6>
+            </div> 
+            <div class="col-md-10" *ngIf="currentorder">
+                <H6>{{currentorder.senderpackage}}</H6>
+           </div> 
+        </div>
+        <div class="row" style="margin-left:20px; margin-top:20px">
+            <div class="col-md-2" style="margin-left:50"> 
+                <H6 style="color: rgb(114, 114, 114);">Buyer :</H6>
+            </div> 
+            <div class="col-md-10" *ngIf="currentorder">
+                <H6>{{currentorder.senderusername}}</H6>
+           </div> 
+        </div>
+        <div class="row" style="margin-left:20px; margin-top:20px">
+            <div class="col-md-2" style="margin-left:50"> 
+                <H6 style="color: rgb(114, 114, 114);">Suggested start date :</H6>
+            </div> 
+            <div class="col-md-10" *ngIf="currentorder">
+                <H6>{{currentorder.startdate}}</H6>
+           </div> 
+        </div>
+        <div class="row" style="margin-left:20px; margin-top:20px">
+            <div class="col-md-2" style="margin-left:50"> 
+                <H6 style="color: rgb(114, 114, 114);">Suggested start time :</H6>
+            </div> 
+            <div class="col-md-10" *ngIf="currentorder">
+                <H6>{{currentorder.starttime}}</H6>
+           </div> 
+        </div>
+        <div class="row" style="margin-left:20px; margin-top:20px">
+            <div class="col-md-2" style="margin-left:50"> 
+                <H6 style="color: rgb(114, 114, 114);">Number of hours :</H6>
+            </div> 
+            <div class="col-md-10" *ngIf="currentorder">
+                <H6>{{currentorder.nbhours}}</H6>
+           </div> 
+        </div>
+        <br>
+        <h3 style="margin-left:50px" >DISCUSS WITH THE BUYER :</h3>
+        <div id="talkjscontainer" style="height: 500px;">Loading...</div>
+        <br>
+        <button class="btn btn-success" (click)="updatestatus('Active','Confirmed')"><i class="now-ui-icons ui-1_check"></i>Accept</button>
+        <button class="btn btn-info"><i class="now-ui-icons ui-2_chat-round"></i>Discuss with buyer</button>
+        <button class="btn btn-danger" (click)="updatestatus('Cancelled','Cancelled')"><i class="now-ui-icons ui-1_simple-remove"></i>Cancel</button>
+          </p-dialog>         
