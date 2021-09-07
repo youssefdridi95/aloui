@@ -168,11 +168,15 @@ input[type="radio"] {
 
 }
 .btnSucc{
-	padding: 4%;
+	padding: 3%;
     border-radius: 10px;
 	margin: 5px;
 }
 
 .controlBtn{
 	margin: 10px;
+}
+.QNumber{
+	font-size: 1.5em;
+	margin-bottom: 30px;
 }

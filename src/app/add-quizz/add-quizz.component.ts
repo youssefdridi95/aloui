@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { QuizzSService } from 'app/affichequizz/quizz-s.service';
 
 @Component({
@@ -18,9 +19,26 @@ export class AddQuizzComponent implements OnInit {
   image = null;
   qCount = 0;
   bloc = 0;
-  constructor(private fb: FormBuilder, private QuizzSService: QuizzSService) { }
+  category=[];
+  quizzCat;
+  constructor(private fb: FormBuilder, private QuizzSService: QuizzSService,private router: Router) { }
 
   ngOnInit(): void {
+
+    this.QuizzSService.getAllQuizzUsingGETResponse().subscribe(
+      res=>{this.quizzCat=res;
+        
+      },err=>{},()=>{
+        let allcat=[];
+        let uniquecat:any;
+        this.quizzCat.map(e=> allcat.push(e.category))
+        uniquecat=new Set(allcat);
+        this.category=Array.from(uniquecat)
+
+        }
+    )
+
+
     this.quizz = this.fb.group({
       title: new FormControl('', { validators: [Validators.required] }),
       description: new FormControl('', { validators: [Validators.required] }),
@@ -81,6 +99,8 @@ export class AddQuizzComponent implements OnInit {
 
       }
       );
+      alert("quizz Added ")
+      this.router.navigate(['/quizz'])
 
     // console.log(JSON.parse(this.quizz.get("questions").value).forEach(element => {console.log(element)
     // }))

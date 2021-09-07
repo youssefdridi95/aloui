@@ -36,6 +36,7 @@ export class PlayquizzComponent implements OnInit {
   }
   SaveAnswer(i:number){
     this.answers.push(i);
+  
     document.getElementById("questionText").classList.add("slide-out-right");
     document.getElementById("answerBody").classList.add("slide-out-right");
     setTimeout(()=>{
@@ -44,11 +45,15 @@ export class PlayquizzComponent implements OnInit {
     },900)
     this.step++;
     this.progress=(this.step/this.questions.length)*100+"%"
-    if(this.QuestionNumber==this.questions.length){
+    console.log(this.QuestionNumber);
+    console.log(this.questions.length);
+
+    if(this.QuestionNumber+1==this.questions.length){
       this.countScore()
     }
   }
   countScore(){
+    
     for(let i=0;i<this.goodAnswers.length;i++){
 
         if(this.answers[i]==this.goodAnswers[i]){
