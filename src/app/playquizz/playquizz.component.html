@@ -23,19 +23,23 @@
                             </div>
                         </div>
                         <div class="quizzBody">
-                            <h3  *ngIf="loader==false" id="questionText" class="questionText slide-in-left">{{item.questionText}}
+                            <h3 *ngIf="loader==false" id="questionText" class="questionText slide-in-left">
+                                {{item.questionText}}
                             </h3>
                             <div *ngIf="loader==true" class="lds-dual-ring"></div>
-                            <h2 *ngIf="loader==true" class="loaderText" >Quizz Is Almost Ready ...</h2>
+                            <h2 *ngIf="loader==true" class="loaderText">Quizz Is Almost Ready ...</h2>
 
                             <div *ngIf="loader==false" id="answerBody" class="answerBody slide-in-left">
                                 <ul class="simpleList">
-                                    <li *ngFor="let answer of item.answers;let AnswerIndex=index"
-                                        (click)="SaveAnswer(AnswerIndex+1)" class="simpleListAnswer  ">
+                                    <ng-container *ngFor="let answer of item.answers;let AnswerIndex=index">
 
-                                        <span class="simpleListText ">
-                                            {{answer.answerText}}</span>
-                                    </li>
+                                        <li (click)="SaveAnswer(AnswerIndex+1)" class="simpleListAnswer"
+                                            *ngIf="answer.answerText!=' '">
+
+                                            <span class="simpleListText ">
+                                                {{answer.answerText}}</span>
+                                        </li>
+                                    </ng-container>
 
                                 </ul>
                             </div>
@@ -47,7 +51,7 @@
                             </div>
                         </div> -->
                     </div>
-                  
+
                 </div>
 
             </div>
@@ -57,8 +61,10 @@
                         results
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title" *ngIf="((resultat/questions.length)*100)>=50">Congratulation <br> {{resultat}}/{{questions.length}} </h5>
-                        <h5 class="card-title" *ngIf="((resultat/questions.length)*100)<50">Failed <br> {{resultat}}/{{questions.length}} </h5>
+                        <h5 class="card-title" *ngIf="((resultat/questions.length)*100)>=50">Congratulation <br>
+                            {{resultat}}/{{questions.length}} </h5>
+                        <h5 class="card-title" *ngIf="((resultat/questions.length)*100)<50">Failed <br>
+                            {{resultat}}/{{questions.length}} </h5>
 
                         <div class="card-text" *ngIf="((resultat/questions.length)*100)>=50">
                             <img src="./../../assets/correct.png" alt="">
@@ -72,64 +78,63 @@
                     <div class="card-footer text-muted">
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
-   
+
     <script>
         // send the node for later .state changes
-    function firstStages(child){
-      if( child.classList.contains('state-2') ){   
-          child.classList.add('state-3');
-      } else if( child.classList.contains('state-1') ){
-          child.classList.add('state-2')
-      } else if( !child.classList.contains('state-1') ){
-          child.classList.add('state-1');
-          setTimeout(secondStages.bind(null, child), 100);
-      }    
-    }
-    function secondStages(child){
-      if( child.classList.contains('state-1') ){
-          child.classList.add('state-2')
-          setTimeout(thirdStages.bind(null, child), 100);
-      } 
-      else if( !child.classList.contains('state-1') )
-      {
-          child.classList.add('state-1')
-      }
-    }
-    function thirdStages(child){
-      if( child.classList.contains('state-2') ){
-          child.classList.add('state-3')
-      }
-    }
-    
-    function shuffle(array) {
-      var currentIndex = array.length, temporaryValue, randomIndex;
-    
-      // While there remain elements to shuffle...
-      while (0 !== currentIndex) {
-          // Pick a remaining element...
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
-    
-          // And swap it with the current element.
-          temporaryValue = array[currentIndex];
-          array[currentIndex] = array[randomIndex];
-          array[randomIndex] = temporaryValue;
-      }
-      return array;
-    }
-    
-    
-    // Demo only stuff
-    decodeText();
-    
-    // beware: refresh button can overlap this timer and cause state mixups
-    setInterval(function(){ decodeText(); }, 10000);
-    
-    
+        function firstStages(child) {
+            if (child.classList.contains('state-2')) {
+                child.classList.add('state-3');
+            } else if (child.classList.contains('state-1')) {
+                child.classList.add('state-2')
+            } else if (!child.classList.contains('state-1')) {
+                child.classList.add('state-1');
+                setTimeout(secondStages.bind(null, child), 100);
+            }
+        }
+        function secondStages(child) {
+            if (child.classList.contains('state-1')) {
+                child.classList.add('state-2')
+                setTimeout(thirdStages.bind(null, child), 100);
+            }
+            else if (!child.classList.contains('state-1')) {
+                child.classList.add('state-1')
+            }
+        }
+        function thirdStages(child) {
+            if (child.classList.contains('state-2')) {
+                child.classList.add('state-3')
+            }
+        }
+
+        function shuffle(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+            return array;
+        }
+
+
+        // Demo only stuff
+        decodeText();
+
+        // beware: refresh button can overlap this timer and cause state mixups
+        setInterval(function () { decodeText(); }, 10000);
+
+
     </script>
 
-</div> 
+</div>

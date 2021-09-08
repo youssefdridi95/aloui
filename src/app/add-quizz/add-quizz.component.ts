@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { QuizzSService } from 'app/affichequizz/quizz-s.service';
+import { UserService } from 'app/shared/user.service';
 
 @Component({
   selector: 'app-add-quizz',
@@ -9,6 +10,7 @@ import { QuizzSService } from 'app/affichequizz/quizz-s.service';
   styleUrls: ['./add-quizz.component.css']
 })
 export class AddQuizzComponent implements OnInit {
+  userDetails;
   quizz: FormGroup;
   selectedFile: File;
   base64Data: any;
@@ -19,24 +21,19 @@ export class AddQuizzComponent implements OnInit {
   image = null;
   qCount = 0;
   bloc = 0;
-  category=[];
-  quizzCat;
-  constructor(private fb: FormBuilder, private QuizzSService: QuizzSService,private router: Router) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private QuizzSService: QuizzSService, private router: Router) { }
 
   ngOnInit(): void {
+    this.userService.getUserProfile().subscribe(
+      res => {
+        this.userDetails = res['user'];
+        console.log(res);
+      },
+      err => {
+        console.log(err);
 
-    this.QuizzSService.getAllQuizzUsingGETResponse().subscribe(
-      res=>{this.quizzCat=res;
-        
-      },err=>{},()=>{
-        let allcat=[];
-        let uniquecat:any;
-        this.quizzCat.map(e=> allcat.push(e.category))
-        uniquecat=new Set(allcat);
-        this.category=Array.from(uniquecat)
-
-        }
-    )
+      }
+    );
 
 
     this.quizz = this.fb.group({
@@ -72,7 +69,7 @@ export class AddQuizzComponent implements OnInit {
   }
   newAnswer(): FormGroup {
     return this.fb.group({
-      answerText: new FormControl('', Validators.required),
+      answerText: new FormControl(' '),
     });
   }
   answers(Qindex: number): FormArray {
@@ -87,10 +84,13 @@ export class AddQuizzComponent implements OnInit {
     let QA = JSON.stringify(QS);
     console.log(QA)
     const quizz = new FormData();
+    quizz.append('usermail', this.userDetails.email);
+    quizz.append('fullname', this.userDetails.name);
     quizz.append('image', this.image, this.image.name);
     quizz.append("title", this.quizz.get('title').value);
     quizz.append("description", this.quizz.get("description").value);
     quizz.append("duration", this.quizz.get("duration").value);
+    quizz.append("category", this.quizz.get("category").value)
     quizz.append("questions", QA)
     // console.log(uploadImageData.values())
     this.QuizzSService.addQuizz(quizz)
@@ -99,8 +99,8 @@ export class AddQuizzComponent implements OnInit {
 
       }
       );
-      alert("quizz Added ")
-      this.router.navigate(['/quizz'])
+    alert("quizz Added ")
+    this.router.navigate(['/quizz'])
 
     // console.log(JSON.parse(this.quizz.get("questions").value).forEach(element => {console.log(element)
     // }))
@@ -124,19 +124,18 @@ export class AddQuizzComponent implements OnInit {
   show(i) {
     this.bloc = -1;
     this.bloc = i;
-    console.log()
+    console.log(this.quizz.value)
 
 
   }
   next() {
-    let arr=[];
-    arr=this.quizz.get('questions').value;
+    let arr = [];
+    arr = this.quizz.get('questions').value;
     console.log(arr.length)
-    if(this.bloc==arr.length)
-    {
+    if (this.bloc == arr.length) {
       this.addQuestion();
     }
     this.bloc++;
-  
+
   }
 }

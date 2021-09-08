@@ -46,8 +46,14 @@
                         <div class="form-group">
                             <label for="">category</label>
                             <select class="form-control" formControlName="category" name="" id="">
-                                <option *ngFor="let cat of category" [ngValue]="cat">{{cat}}</option>
-
+                                <option>Buisness</option>
+                                <option>Coding</option>
+                                <option>Digital Marketing</option>
+                                <option>Fun & Lifestyle</option>
+                                <option>Languages</option>
+                                <option>Marketing</option>
+                                <option>Music & Audio</option>
+                                <option>Security</option>
                             </select>
                         </div>
                         <input type="file" formControlName="image" #file hidden (change)="onFileChanged($event)">
@@ -59,10 +65,9 @@
                         <div [formGroupName]="Qindex" class="questionList">
                             <div style="display: none;" [class.selected]="Qindex===(bloc-1)">
                                 <div class="question">
-                                    <div class="QNumber">
+                                    <!-- <div class="QNumber">
                                     Question N° {{Qindex}}
-                                </div>
-                               
+                                </div> -->
                                     <div class="form-group">
                                         <input type="text" class="form-control questionField"
                                             formControlName="questionText" name="" id="" aria-describedby="helpId"
@@ -79,7 +84,7 @@
                                 <div formArrayName="answers" class="row answersArray">
                                     <div *ngFor="let answer of answers(Qindex).controls; let AnswerIndex=index">
                                         <div [formGroupName]="AnswerIndex" class=" answersGroup">
-                                           <label> {{AnswerIndex+1}} )</label>
+                                            <label> {{AnswerIndex+1}} )</label>
                                             <div class="form-group oneAnswer">
                                                 <input type="text" class="form-control" formControlName="answerText"
                                                     name="" id="" aria-describedby="helpId" placeholder="answerText">
@@ -89,40 +94,41 @@
                                         </div>
                                     </div>
                                 </div>
-                               <div class="row">
-                                <div class="col-md-3">
+                                <div class="row">
+                                    <div class="col-md-3">
 
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <select class="form-control answersScroll" formControlName="valid" name="" id="">
-                                            <option selected>Choose the Correct Answer</option>
-                                            <option value="1">Answer 1</option>
-                                            <option value="2" >Answer 2</option>
-                                            <option value="3" >Answer 3</option>
-                                            <option value="4">Answer 4</option>
-                                        </select>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <select class="form-control answersScroll" formControlName="valid" name=""
+                                                id="">
+                                                <option selected>Choose the Correct Answer</option>
+                                                <option value="1">Answer 1</option>
+                                                <option value="2">Answer 2</option>
+                                                <option value="3">Answer 3</option>
+                                                <option value="4">Answer 4</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
-            <div class="row d-flex justify-content-end">
-                <div class="col-md-5 d-flex justify-content-end controlBtn">
+                <div class="row d-flex justify-content-end">
+                    <div class="col-md-5 d-flex justify-content-end controlBtn">
+                        <input class="btn btn-success btnSucc" (click)='next()' type="submit" value="Next">
 
-                    <input class="btn btn-primary btnSucc" (click)='save()' *ngIf="bloc!=0" type="submit" value="Submit" >
-                    <input class="btn btn-success btnSucc" (click)='next()'  type="submit" value="Next" >
+                        <input class="btn btn-primary btnSucc" (click)='save()' *ngIf="bloc!=0" type="submit"
+                            value="Submit">
 
+                        <!-- <button type="submit" class="btn btn-primary" (click)='save()' *ngIf="bloc!=0">save</button> -->
+                    </div>
+                    <div class="col-md-2"></div>
 
-                    <!-- <button type="submit" class="btn btn-primary" (click)='save()' *ngIf="bloc!=0">save</button> -->
                 </div>
-                <div class="col-md-2"></div>
 
-            </div>
-                
             </form>
         </div>
     </div>

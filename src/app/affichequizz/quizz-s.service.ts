@@ -17,7 +17,7 @@ export class QuizzSService {
   }
   addQuizz(quizz: FormData)
   {
-    console.log(quizz);
+    console.log(quizz.values);
     return this.http.post(environment.apiBaseUrl+'/quizz/addQuizz',quizz);
   }
   getQuizz(id) {

@@ -66,7 +66,11 @@ export class PlayquizzComponent implements OnInit {
     // console.log(this.answers)
     // console.log(this.resultat/this.questions.length)
   }
-
+  public noWhitespaceValidator(answerValue) {
+    const isWhitespace = (answerValue || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+}
 
 
 
