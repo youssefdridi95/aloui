@@ -76,6 +76,8 @@ import { AffichequizzComponent } from './affichequizz/affichequizz.component';
 import { AddQuizzComponent } from './add-quizz/add-quizz.component';
 import { QuizzSService } from './affichequizz/quizz-s.service';
 import { PlayquizzComponent } from './playquizz/playquizz.component';
+import { SearchFilterPipe } from './shared/search-filter.pipe';
+import { CategoryFilterPipe } from './shared/category-filter.pipe';
 
 
 @NgModule({
@@ -112,6 +114,8 @@ import { PlayquizzComponent } from './playquizz/playquizz.component';
         AffichequizzComponent,
         AddQuizzComponent,
         PlayquizzComponent,
+        SearchFilterPipe,
+        CategoryFilterPipe,
         
         
       

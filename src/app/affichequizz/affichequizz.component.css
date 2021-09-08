@@ -40,3 +40,6 @@
 	position:relative;
 	top:1px;
 }
+.badge{
+	background-color: black !important;
+}

@@ -13,71 +13,73 @@
             <div class="content-center">
                 <h1 class="title">Learnly</h1>
                 <h1 class="title">Test your skill with our quizzes</h1>
-                <a [routerLink]="['/addQuizz']"   *ngIf="teacher" class="myButton">Add Quizz</a>
+                <a [routerLink]="['/addQuizz']" *ngIf="teacher" class="myButton">Add Quizz</a>
             </div>
         </div>
     </div>
-  
+
     <div class="quizzpage">
         <div class="searchFilter">
-              <div class="card">
-            <article class="filter-group">
-            
-               
-            </article> <!-- filter-group  .// -->
-            <article class="filter-group">
-                <header class="card-header">
-                    <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" class="">
-                        <i class="icon-control fa fa-chevron-down"></i>
-                        <h6 class="title">Categories</h6>
-                    </a>
-                </header>
-                <div class="filter-content collapse show" id="collapse_2" style="">
-                    <div class="card-body">
-                        <label class="custom-control custom-checkbox" *ngFor="let cat of category">
-                          <input type="checkbox" checked="" class="custom-control-input">
-                          <div class="custom-control-label">{{cat}}  
-                              <b class="badge badge-pill badge-light float-right">120</b>  </div>
-                        </label>
-                        
-                        
-            </div> <!-- card-body.// -->
-                </div>
-            </article> <!-- filter-group .// -->
-            <article class="filter-group">
-                <header class="card-header">
-                    <a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
-                        <i class="icon-control fa fa-chevron-down"></i>
-                        <h6 class="title"> looking for a quizz ? </h6>
-                    </a>
-                </header>
-                <div class="filter-content collapse show" id="collapse_3" style="">
-                    <div class="card-body">
-                        <div class="form-row">
-                        <div class="form-group">
-                          <input type="text" name="" id="" class="form-control" placeholder="search ..." aria-describedby="helpId">
-                          <!-- <small id="helpId" class="text-muted">search by name</small> -->
-                        </div>
-                        </div> <!-- form-row.// -->
-                        <button class="btn btn-block btn-primary">Apply</button>
-                    </div><!-- card-body.// -->
-                </div>
-            </article> <!-- filter-group .// -->
-            
+            <div class="card">
+                <article class="filter-group">
+
+
+                </article> <!-- filter-group  .// -->
+                <article class="filter-group">
+                    <header class="card-header">
+                        <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" class="">
+                            <i class="icon-control fa fa-chevron-down"></i>
+                            <h6 class="title">Categories</h6>
+                        </a>
+                    </header>
+                    <div class="filter-content collapse show" id="collapse_2" style="">
+                        <div class="card-body">
+                            <label class="custom-control " *ngFor="let cat of category">
+                                <input type="radio" [(ngModel)]="radioSelected" name="list_name" value="{{cat}}"  />
+                                <div class="">{{cat}}
+                                    <b class="badge badge-pill badge-dark  float-right"> {{(quizz | categoryFilter:cat).length}} </b>
+                                </div>
+                                
+                            </label>
+
+
+                        </div> <!-- card-body.// -->
+                    </div>
+                </article> <!-- filter-group .// -->
+                <article class="filter-group">
+                    <header class="card-header">
+                        <a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
+                            <i class="icon-control fa fa-chevron-down"></i>
+                            <h6 class="title"> looking for a quizz ? </h6>
+                        </a>
+                    </header>
+                    <div class="filter-content collapse show" id="collapse_3" style="">
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" name="" [(ngModel)]="filterText" id="" class="form-control" placeholder="search ..."
+                                        aria-describedby="helpId">
+                                </div>
+                            </div> <!-- form-row.// -->
+                        </div><!-- card-body.// -->
+                    </div>
+                </article> <!-- filter-group .// -->
+
+            </div>
         </div>
-        </div>
-    <div class="Allquizz">
-            <div class="card" *ngFor="let item of quizz" >
-                <img class="card-img-top" style="max-height: 320px;max-width: 320px;" src="{{item.image}}" alt="Card image cap">
+        <div class="Allquizz">
+            <div class="card" *ngFor="let item of quizz | categoryFilter:radioSelected | searchFilter:filterText">
+                <img class="card-img-top" style="max-height: 320px;max-width: 320px;" src="{{item.image}}"
+                    alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{item.title}}</h5>
                     <p class="card-text">{{item.description}}
-                        </p>
+                    </p>
                     <a [routerLink]="['/quizz', item._id]" class="btn btn-primary">start quizz</a><br>
-                    <label>creadted by : {{item.fullname}}  </label>
+                    <label>creadted by : {{item.fullname}} </label>
                 </div>
             </div>
+        </div>
+
     </div>
-    
-</div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { QuizzSService } from './quizz-s.service';
 
 @Component({
@@ -12,7 +12,9 @@ export class AffichequizzComponent implements OnInit {
 quizz:[any];
 category:any;
 teacher:boolean;
-  ngOnInit(): void {
+public radioSelected: any = '';
+public filterText: any = '';
+ngOnInit(): void {
     this.QuizzSService.getAllQuizzUsingGETResponse().subscribe(
       res=>{this.quizz=res;
         
@@ -31,3 +33,4 @@ teacher:boolean;
   }
 
 }
+

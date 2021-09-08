@@ -21,15 +21,15 @@ export class PlayquizzComponent implements OnInit {
   progress = "0%"
   loader = true;
   duration = 0;
-  mm=0;
-  ss=0;
+  mm = 0;
+  ss = 0;
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const _id = routeParams.get('quizzId');
     this.QuizzSService.getQuizz(_id).subscribe((res) => {
       this.quizz = res['data'][0];
       this.questions = res['data'][0].questions
-      this.duration=res['data'][0].duration*60;
+      this.duration = res['data'][0].duration * 60;
       this.questions.forEach(e => this.goodAnswers.push(parseInt(e['valid'])))
 
     })
@@ -65,10 +65,7 @@ export class PlayquizzComponent implements OnInit {
       }
 
     }
-    // console.log("/////////")
-    // console.log(this.goodAnswers);
-    // console.log(this.answers)
-    // console.log(this.resultat/this.questions.length)
+
   }
 
   timerCountDown() {
@@ -76,8 +73,8 @@ export class PlayquizzComponent implements OnInit {
       () => {
         this.duration--;
         console.log(this.duration)
-        this.mm= Math.floor(this.duration / 60);
-        this.ss=this.duration % 60;
+        this.mm = Math.floor(this.duration / 60);
+        this.ss = this.duration % 60;
         if (this.duration == 0) {
           clearInterval(countdown);
           this.countScore()
@@ -86,7 +83,7 @@ export class PlayquizzComponent implements OnInit {
       }, 1000
     )
 
-    
+
 
   }
 
