@@ -194,6 +194,7 @@ background: linear-gradient(180deg, rgba(120,247,254,1) 0%, rgba(59,196,207,1) 1
     align-items: center;
 }
 
+
 /* ***************************loader  *******************/
 .lds-dual-ring {
 	position: absolute;
@@ -229,4 +230,9 @@ background: linear-gradient(180deg, rgba(120,247,254,1) 0%, rgba(59,196,207,1) 1
 
 
 
-
+/******** time out ***************/
+.blink-1{-webkit-animation:blink-1 2s infinite both;animation:blink-1 2s infinite both}
+.danger{
+	color: red;
+}
+@-webkit-keyframes blink-1{0%,50%,100%{color:red}25%,75%{color:black}}@keyframes blink-1{0%,50%,100%{color:red}25%,75%{color:black}}

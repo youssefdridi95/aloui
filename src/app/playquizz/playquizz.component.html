@@ -17,8 +17,8 @@
 
                             </div>
                             <div class="col-md-2">
-                                <p>
-                                    00:00
+                                <p [class.blink-1]="duration<60">
+                                    {{mm}}:{{ss}}
                                 </p>
                             </div>
                         </div>
@@ -61,17 +61,12 @@
                         results
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title" *ngIf="((resultat/questions.length)*100)>=50">Congratulation <br>
+                        <h5 class="card-title" *ngIf="((resultat/questions.length)*100)>=60">Congratulation <br>
                             {{resultat}}/{{questions.length}} </h5>
-                        <h5 class="card-title" *ngIf="((resultat/questions.length)*100)<50">Failed <br>
+                        <h5 class="card-title" *ngIf="((resultat/questions.length)*100)<60">Failed <br>
                             {{resultat}}/{{questions.length}} </h5>
 
-                        <div class="card-text" *ngIf="((resultat/questions.length)*100)>=50">
-                            <img src="./../../assets/correct.png" alt="">
-                        </div>
-                        <div class="card-text" *ngIf="((resultat/questions.length)*100)<50">
-                            <img src="./../../assets/wrong.png" alt="">
-                        </div>
+                     
 
                         <a [routerLink]="['/courses']" class="btn btn-primary">go To Course</a>
                     </div>

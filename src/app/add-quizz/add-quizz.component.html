@@ -25,6 +25,7 @@
             <form [formGroup]="quizz" enctype="multipart/form-data">
                 <div class="generalInfo" *ngIf="bloc===0">
                     <div class="center-center">
+                        
                         <div class="form-group">
                             <label for="">title</label>
                             <input type="text" class="form-control" formControlName="title" name="" id=""
@@ -38,7 +39,7 @@
                             <!-- <small id="helpId" class="form-text text-muted">Help text</small> -->
                         </div>
                         <div class="form-group">
-                            <label for="">duration</label>
+                            <label for="">duration (minutes)</label>
                             <input type="number" class="form-control" formControlName="duration" name="" id=""
                                 aria-describedby="helpId" placeholder="duration">
                             <!-- <small id="helpId" class="form-text text-muted">Help text</small> -->
